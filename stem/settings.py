@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'stem.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 if 'ON_HEROKU' in os.environ:
     DATABASES = { 
-        'default' : dj_database_url.config(os.environ['DATABASE_URL'])
+        'default' : dj_database_url.parse(os.environ['DATABASE_URL'])
     }
 else:
     DATABASES = {
