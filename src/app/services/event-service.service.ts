@@ -13,8 +13,7 @@ export class EventService {
 
   constructor(private http: HttpClient) {
 
-    var port = window.location.port == '' ? '80' : window.location.port;
-    this.eventApiUrl = window.location.protocol + window.location.host + ':' + port  + '/api/v1/events/';
+    this.eventApiUrl = '/api/v1/events/';
     this.user;
   }
 

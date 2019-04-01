@@ -13,8 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private locationService: Location) {
 
-    var port = window.location.port == '' ? '80' : window.location.port;
-    this.urlDetail = window.location.protocol + window.location.host + ':' + port  + '/api/v1/users/';
+    this.urlDetail = '/api/v1/users/';
 
   }
 
