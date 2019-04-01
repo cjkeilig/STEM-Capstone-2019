@@ -12,7 +12,10 @@ export class UserService {
   private urlDetail: string;
 
   constructor(private http: HttpClient, private locationService: Location) {
-    this.urlDetail = 'http://localhost:8000/api/v1/users/';
+
+    var port = window.location.port == "" ? 80 : window.location.port;
+    this.urlDetail = window.location.protocol + window.location.host + ":" + port  + '/api/v1/users/';
+    
   }
 
   getUsers(): Observable<IUser[]> {

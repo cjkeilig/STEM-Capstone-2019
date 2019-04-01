@@ -14,7 +14,8 @@ export class AuthenticationService {
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
-        this.apiUrl = 'http://localhost:8000/api/login/';
+        var port = window.location.port == "" ? 80 : window.location.port;
+        this.apiUrl = window.location.protocol + window.location.host + ":" + port  + '/api/login/';
     }
 
     public get currentUserValue(): User {
