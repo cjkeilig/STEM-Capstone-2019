@@ -1,0 +1,93 @@
+<div style="width:500px">
+  <h2 mat-dialog-title>Update Profile</h2>
+
+  <div fxFlexLayout="column">
+
+    <form fxFlex [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <mat-dialog-content>
+        <div fxLayout="column">
+          <div fxFlex *ngIf="error" class="errormessage">{{ error }}</div>
+          <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px">
+            <mat-form-field fxFlex>
+              <input matInput placeholder="First Name*" formControlName="firstName" />
+              <mat-error *ngIf="updateForm.get('firstName').invalid">
+                {{ getErrorMessage('firstName') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Last Name*" formControlName="lastName" />
+              <mat-error *ngIf="updateForm.get('lastName').invalid">
+                {{ getErrorMessage('lastName') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px">
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Date of Birth" formControlName="dob" type="date" />
+              <mat-error *ngIf="updateForm.get('dob').invalid">
+                {{ getErrorMessage('dob') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Phone Number" formControlName="phone" />
+              <mat-hint align="start">Format: ###-###-####</mat-hint>
+              <mat-error *ngIf="updateForm.get('phone').invalid">
+                Invalid phone number.  Format: ###-###-####
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field fxFlex>
+            <input matInput placeholder="Email Address*" formControlName="email" />
+            <mat-error *ngIf="updateForm.get('email').invalid">
+              {{ getErrorMessage('email') }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex>
+            <input matInput placeholder="Address" formControlName="address" />
+            <mat-error *ngIf="updateForm.get('address').invalid">
+              {{ getErrorMessage('email') }}
+            </mat-error>
+          </mat-form-field>
+
+          <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px">
+            <mat-form-field fxFlex>
+              <input matInput placeholder="City" formControlName="city" />
+              <mat-error *ngIf="updateForm.get('city').invalid">
+                {{ getErrorMessage('city') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100px">
+              <input matInput placeholder="State" formControlName="state" />
+              <mat-error *ngIf="updateForm.get('state').invalid">
+                {{ getErrorMessage('state') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100px">
+              <input matInput placeholder="Zip" formControlName="zip" />
+              <mat-error *ngIf="updateForm.get('zip').invalid">
+                Invalid zip code
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <div style="margin-top:5px;font-size:smaller;text-align: center;">*Indicates Required</div>
+      <mat-dialog-actions>
+        <button class="mat-raised-button" (click)="close()">
+          Close
+        </button>
+
+        <button class="mat-raised-button mat-primary" type="submit" [disabled]="!updateForm.valid">
+          Save
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>
